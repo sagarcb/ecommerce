@@ -16,7 +16,6 @@ use Illuminate\Http\Request;
 use Cart;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Null_;
-use PhpParser\Node\Expr\Cast\Object_;
 use Session;
 
 class CartController extends Controller
@@ -147,7 +146,7 @@ class CartController extends Controller
         //  'pro_color'=> $pro_color_name
          ]);
     }
-
+    
      public function addtoCartAjax(Request $request)
     {
         $cartCount = 0;
@@ -264,6 +263,7 @@ class CartController extends Controller
             'cartCount' => $cartCount,
         ]);
     }
+    
 
     public function showCart(){
 

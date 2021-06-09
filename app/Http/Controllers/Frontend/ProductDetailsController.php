@@ -35,12 +35,12 @@ class ProductDetailsController extends Controller
         return view('Frontend.single_pages.product-details' , compact('product', 'rating', 'ratingCount','reviews','colors','sizes','cartpage','orders','reviews1'));
 
     }
-
+    
     //index_ajax
     public function index_ajax($id)
     {
         $cartpage = CartShopping::with('product')->where('user_id', Auth::id())->where('status', '0')->get();
-        $product = product::with('sub_images')->find($id);
+        $product = product::find($id);
         $reviews = review::where('product_id', $id)->get();
         $reviews1 = review::where('product_id', $id)->limit(3)->get();
         $colors = product_color::where('product_id', $product->id)->get();
@@ -66,7 +66,6 @@ class ProductDetailsController extends Controller
         ];
         return response()->json($response);
     }
-
 
     public function reviewsWithoutLimit($id)
     {
